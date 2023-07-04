@@ -42,11 +42,13 @@ export default function Home({}: HomeProps) {
                 // Same substring at the start will only be typed out once, initially
                 "Frontend Developer",
                 1000, // wait 1s before replacing "Mice" with "Hamsters"
+                "Backend Developer",
+                1000,
                 "Full Stack Developer",
                 1000,
                 "Javascript Developer",
                 1000,
-                "Backend Developer",
+                "Typescript Developer",
                 1000,
               ]}
               wrapper="span"
