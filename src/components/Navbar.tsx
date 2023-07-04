@@ -10,7 +10,7 @@ export default function Navbar({}: NavbarProps) {
     <div
       className={`font-mono fixed w-full bg-white ${
         isMenuOpen ? "h-screen md:h-16" : "h-16"
-      }  border-b border-neutral-300 shadow-sm top-0 z-50`}
+      }  border-b border-neutral-300 shadow-sm top-0 z-50 px-3`}
     >
       <header
         className={`p-5 flex justify-between container mx-auto md:items-center h-full md:p-0 ${
@@ -27,23 +27,23 @@ export default function Navbar({}: NavbarProps) {
               isMenuOpen ? "block" : "hidden"
             } mx-5`}
           >
-            <li className="hover:underline cursor-pointer py-1 md:py-0">
-              Home
+            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+              <a href="#home">Home</a>
             </li>
-            <li className="hover:underline cursor-pointer py-1 md:py-0">
-              About
+            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+              <a href="#about">About</a>
             </li>
-            <li className="hover:underline cursor-pointer py-1 md:py-0">
-              Products
+            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+              <a href="#about">Skills</a>
             </li>
-            <li className="hover:underline cursor-pointer py-1 md:py-0">
-              Services
+            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+              <a href="#about">Projects</a>
             </li>
-            <li className="hover:underline cursor-pointer py-1 md:py-0">
-              Login
+            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+              <a href="#about">Education</a>
             </li>
-            <li className="hover:underline cursor-pointer py-1 md:py-0">
-              Register
+            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+              <a href="#about">Contact</a>
             </li>
           </ul>
         </div>
