@@ -56,10 +56,10 @@ export default function Home({}: HomeProps) {
               repeat={Infinity}
             />
           </h1>
-          <Button className="justify-self-start w-fit group">
+          <a href="#about" className={cn(buttonVariants(), "justify-self-start w-fit group")}>
             About Me{" "}
             <ArrowDown className="w-4 h-4 bg-white rounded-full text-black group group-hover:translate-x-1 mx-1 transition-all" />
-          </Button>
+          </a>
 
           <div className="flex gap-x-1 flex-wrap">
             <a
