@@ -1,7 +1,13 @@
+import { Icons } from "@/components/Icons";
+import Home from "@/components/sections/Home";
+import Skills from "@/components/sections/Skills";
 import Image from "next/image";
 
-export default function Home() {
-  return <div>
-    <h1 className="underline text-5xl font-bold">Hello</h1>
-  </div>;
+export default function HomePage() {
+  return (
+    <div>
+      <Home />
+      <Skills />
+    </div>
+  );
 }
