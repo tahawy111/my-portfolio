@@ -18,31 +18,51 @@ export default function Navbar({}: NavbarProps) {
         }`}
       >
         <div className="block md:flex justify-between items-center w-full">
-          <h1 className="text-xl font-semibold">
-          <Icons.logo className="w-16 h-16" />
-          </h1>
+          <a href="#home">
+            <h1 className="text-xl font-semibold">
+              <Icons.logo className="w-16 h-16" />
+            </h1>
+          </a>
 
           <ul
             className={`md:flex font-bold gap-x-2 ${
               isMenuOpen ? "block" : "hidden"
             } mx-5`}
           >
-            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
               <a href="#home">Home</a>
             </li>
-            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
               <a href="#about">About</a>
             </li>
-            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
               <a href="#about">Skills</a>
             </li>
-            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
               <a href="#about">Projects</a>
             </li>
-            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
               <a href="#about">Education</a>
             </li>
-            <li className="h-7 hover:border-b-2 border-b-red-600 cursor-pointer py-1 md:py-0">
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
               <a href="#about">Contact</a>
             </li>
           </ul>
