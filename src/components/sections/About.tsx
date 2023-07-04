@@ -27,7 +27,7 @@ export default function About({}: AboutProps) {
         <div className="">
           <h1 className="text-3xl font-bold">I'm Amer</h1>
           <h1 className="font-bold">Full Stack Developer</h1>
-          <p className="max-w-md">
+          <p className="max-w-md mt-5">
             I am a Full-Stack developer based in Alexandria, Egypt. I am very
             passionate about improving my coding skills & developing
             applications & websites. I build WebApps and Websites using MERN
