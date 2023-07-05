@@ -9,9 +9,9 @@ interface AboutProps {}
 
 export default function About({}: AboutProps) {
   return (
-    <motion.div className={`flex flex-col w-full h-[calc(100vh-63px)] mt-20`}>
-      <h1 id="about" className="text-5xl font-bold mx-auto my-3">
-        About <span className="text-sky-500">Me</span>
+    <motion.div id="about" className={`flex flex-col w-full h-[calc(100vh-63px)] mt-20`}>
+      <h1 className="text-5xl font-bold mx-auto mt-20">
+        About <span className="text-sky-500 underline underline-offset-8">Me</span>
       </h1>
       <div className="flex justify-center gap-16 flex-wrap items-center h-full">
         <Tilt options={defaultTiltOptions}>
@@ -43,6 +43,8 @@ export default function About({}: AboutProps) {
             Stack. Working for myself to improve my skills. Love to build
             Full-Stack clones.
           </p>
+          <p className="my-3"><span className="text-cyan-600 font-semibold">Email :</span> amertahawy111@gmail.com</p>
+          <p><span className="text-cyan-600 font-semibold">Place :</span> Alexandria, Egypt</p>
         </motion.div>
       </div>
     </motion.div>

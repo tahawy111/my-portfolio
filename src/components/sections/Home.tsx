@@ -18,7 +18,6 @@ import { cn } from "@/lib/utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "@/lib/hooks/use-toast";
 import { defaultTiltOptions } from "@/lib/config";
-import Reveal from "../Reveal";
 
 interface HomeProps {}
 

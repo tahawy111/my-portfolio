@@ -45,7 +45,7 @@ export default function Navbar({}: NavbarProps) {
               onClick={() => setIsMenuOpen(false)}
               className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
             >
-              <a href="#about">Skills</a>
+              <a href="#skills">Skills</a>
             </li>
             <li
               onClick={() => setIsMenuOpen(false)}
