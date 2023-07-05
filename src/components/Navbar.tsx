@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Icons } from "./Icons";
+import Link from "next/link";
 interface NavbarProps {}
 
 export default function Navbar({}: NavbarProps) {
@@ -10,7 +11,7 @@ export default function Navbar({}: NavbarProps) {
     <div
       className={`font-mono fixed w-full bg-white ${
         isMenuOpen ? "h-screen md:h-16" : "h-16"
-      }  border-b border-neutral-300 shadow-sm top-0 z-50 px-3`}
+      }  border-b border-neutral-300 shadow-sm top-0 z-50 px-3 mb-[63px]`}
     >
       <header
         className={`p-5 flex justify-between container mx-auto md:items-center h-full md:p-0 ${
@@ -33,7 +34,7 @@ export default function Navbar({}: NavbarProps) {
               onClick={() => setIsMenuOpen(false)}
               className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
             >
-              <a href="#home">Home</a>
+              <Link href="/#home">Home</Link>
             </li>
             <li
               onClick={() => setIsMenuOpen(false)}
@@ -64,6 +65,13 @@ export default function Navbar({}: NavbarProps) {
               className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
             >
               <a href="#about">Contact</a>
+            </li>
+            <li
+              onClick={() => setIsMenuOpen(false)}
+              className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
+            >
+              <Link href="/login">Login</Link>
+              {/* TODO: ADD NEXT-AUTH */}
             </li>
           </ul>
         </div>
