@@ -3,9 +3,8 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
 import { nanoid } from "nanoid";
-import Cookies from "js-cookie";
 
-const allowedEmails = ["amertahawy111@gmail.com","elfathstore.ymka@gmail.com"];
+const allowedEmails = process.env.ALLOWED_EMAILS!.split("|");
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -51,16 +50,6 @@ export const authOptions: NextAuthOptions = {
             username: nanoid(10),
           },
         });
-      }
-
-      if (user?.email && !allowedEmails.includes(user.email)) {
-        return {
-          id:"",
-          name:"",
-          email:"",
-          picture:"",
-          username:"",
-        };
       }
 
       return {

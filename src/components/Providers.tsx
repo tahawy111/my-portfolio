@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Toaster } from "./ui/Toaster";
+import { SessionProvider } from "next-auth/react";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -8,8 +9,10 @@ interface ProvidersProps {
 export default function Providers({ children }: ProvidersProps) {
   return (
     <>
-      <Toaster />
-      {children}
+      <SessionProvider>
+        <Toaster />
+        {children}
+      </SessionProvider>
     </>
   );
 }
