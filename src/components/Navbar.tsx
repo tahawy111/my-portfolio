@@ -19,11 +19,11 @@ export default function Navbar({}: NavbarProps) {
         }`}
       >
         <div className="block md:flex justify-between items-center w-full">
-          <a href="#home">
+          <Link href="/#home">
             <h1 className="text-xl font-semibold">
               <Icons.logo className="w-16 h-16" />
             </h1>
-          </a>
+          </Link>
 
           <ul
             className={`md:flex font-bold gap-x-2 ${
@@ -70,7 +70,7 @@ export default function Navbar({}: NavbarProps) {
               onClick={() => setIsMenuOpen(false)}
               className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
             >
-              <Link href="/login">Login</Link>
+              <Link href="/sign-in">Login</Link>
               {/* TODO: ADD NEXT-AUTH */}
             </li>
           </ul>

@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { toast } from "@/lib/hooks/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { defaultTiltOptions } from "@/lib/config";
 
 interface HomeProps {}
