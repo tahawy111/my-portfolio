@@ -1,26 +1,24 @@
 "use client";
+import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/Button";
+import { toast } from "@/hooks/use-toast";
 import { getAuthSession } from "@/lib/auth";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import {} from "react";
 
-export default async function page() {
-  const { data: session,status } = useSession();
+export default function page() {
+  const { data: session } = useSession();
   const router = useRouter();
+  const handleSignOut = () => {
+    signOut().then(() => {
+      router.push("/sign-in");
+    });
+  };
   return (
-    <div>
-      <div>Hi: {session?.user.name}</div>
-
-      <Button
-        onClick={() => {
-          signOut().then(() => {
-            router.push("/sign-in");
-          });
-        }}
-      >
-        Logout
-      </Button>
-    </div>
+    <AdminLayout>
+            Hi {session?.user.name}
+      <Button onClick={handleSignOut}>Logout</Button>
+    </AdminLayout>
   );
 }

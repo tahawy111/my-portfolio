@@ -7,22 +7,16 @@ import { ChevronLeft } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-const allowedEmails = process.env.ALLOWED_EMAILS!;
+import { useEffect } from "react";
 
 export default function page() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [isMounted, setIsMounted] = useState<boolean>(false);
-
   useEffect(() => {
     if (session?.user.email) {
-      setIsMounted(true);
-
       router.push("/admin");
     }
-  }, []);
+  }, [session]);
 
   if (session === undefined && status === "loading") {
     return <Loading />;

@@ -20,8 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <div className="my-[63px]"><Providers>{children}</Providers></div>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
