@@ -5,6 +5,7 @@ import { FC, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Icons } from "./Icons";
 import { Archive, Home, List, LogOut, Settings } from "lucide-react";
+import { Wrench } from "lucide-react";
 
 interface SidebarProps
   extends React.DetailedHTMLProps<
@@ -45,15 +46,15 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
           Dashboard
         </Link>
         <Link
-          href={`/products`}
-          className={pathname.includes("/products") ? activeLink : inActiveLink}
+          href={`/admin/skills`}
+          className={pathname.includes("/admin/skills") ? activeLink : inActiveLink}
         >
-          <Archive
+          <Wrench
             className={
-              pathname.includes("/products") ? activeIcon : inActiveIcon
+              pathname.includes("/admin/skills") ? activeIcon : inActiveIcon
             }
           />
-          Products
+          Skills
         </Link>
         <Link
           href={`/categories`}

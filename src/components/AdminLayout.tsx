@@ -19,7 +19,7 @@ export default function AdminLayout({
 
   return (
     <div className={cn(className, "")} {...props}>
-      <div className="bg-bgGray min-h-screen ">
+      <div className="bg-bgGray min-h-screen">
         <div className="md:hidden flex items-center">
           <button
             className="mx-4 my-3"
@@ -34,7 +34,7 @@ export default function AdminLayout({
         <div className={cn(`flex`, className)} {...props}>
           <Sidebar show={showNav} />
 
-          <div className="flex-grow">
+          <div className="flex-grow m-10">
             {children}
             {/* Signed in as {session.user.email} <br />
         <button className="bg-gray-100 p-2 rounded-lg px-4 cursor-pointer hover:bg-gray-200 active:bg-gray-500 transition-colors duration-75" onClick={() => signOut()}>Sign out</button> */}

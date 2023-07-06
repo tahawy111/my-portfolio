@@ -17,8 +17,10 @@ export default function page() {
   };
   return (
     <AdminLayout>
-            Hi {session?.user.name}
+      <div className="flex justify-between p-10">
+      <div className="">Hi {session?.user.name}</div>
       <Button onClick={handleSignOut}>Logout</Button>
+      </div>
     </AdminLayout>
   );
 }
