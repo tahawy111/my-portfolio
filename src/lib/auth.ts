@@ -3,8 +3,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
 import { nanoid } from "nanoid";
+import Cookies from "js-cookie";
 
-const allowedEmails = process.env.ALLOWED_EMAILS!.split("|");
+const allowedEmails = process.env.ALLOWED_EMAILS!;
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -20,47 +21,24 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+
   callbacks: {
-    async session({ token, session }) {
-      if (token) {
-        session.user.id = token.id;
-        session.user.name = token.name;
-        session.user.email = token.email;
-        session.user.image = token.picture;
-        session.user.username = token.username;
-      }
+    async signIn({user}) {
+      // console.log(user);
+      const email = user.email as string
 
-      return session;
+      console.log(allowedEmails.split("|").includes(email));
+      
+      if (allowedEmails.split("|").includes(email)) {
+        console.log(true);
+        
+        return true;
+      } else {
+        console.log(false);
+        return false;
+      }
     },
-
-    async jwt({ token, user }) {
-      const dbUser = await db.user.findFirst({ where: { email: token.email } });
-
-      if (!dbUser) {
-        token.id = user!.id;
-        return token;
-      }
-
-      if (!dbUser.username) {
-        await db.user.update({
-          where: {
-            id: dbUser.id,
-          },
-          data: {
-            username: nanoid(10),
-          },
-        });
-      }
-
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-        picture: dbUser.image,
-        username: dbUser.username,
-      };
-    },
-    redirect() {
+    async redirect() {
       return "/admin";
     },
   },
