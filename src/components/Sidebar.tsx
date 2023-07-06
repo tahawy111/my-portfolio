@@ -18,7 +18,7 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
   const { data: session, status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
-  const inActiveLink = "flex gap-1 p-1 items-center";
+  const inActiveLink = "flex gap-1 p-1 items-center pr-10";
   const activeLink = `${inActiveLink} bg-highlight text-black rounded-sm bg-pink-100`;
   const inActiveIcon = "w-6 h-6";
   const activeIcon = `${inActiveIcon} text-primary`;
