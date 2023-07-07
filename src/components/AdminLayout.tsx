@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { HTMLAttributes, ReactNode, useState } from "react";
 import { Icons } from "./Icons";
 import Loading from "./Loading";
@@ -25,10 +25,10 @@ export default function AdminLayout({
             className="mx-4 my-3"
             onClick={() => setShowNav((prev) => !prev)}
           >
-            <Menu className="w-7 h-7" />
+            {!showNav ? <Menu className="w-7 h-7" /> : <X className="w-7 h-7"/>}
           </button>
-          <div className="flex grow justify-center mr-8">
-            <Icons.logo />
+          <div className="flex grow justify-end mr-8">
+            <Icons.logo className="w-8 h-8" />
           </div>
         </div>
         <div className={cn(`flex`, className)} {...props}>

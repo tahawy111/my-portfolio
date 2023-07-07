@@ -27,14 +27,14 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
   return (
     <aside
       className={cn(
-        `text-gray-500 p-4 fixed w-full bg-bgGray h-full ${
+        `text-gray-500 p-4 fixed w-full bg-gray-100 z-20 h-screen overflow-auto ${
           show ? "left-0" : "-left-full"
         } md:static md:w-auto transition-al`,
         className
       )}
       {...props}
     >
-      <div className="mb-4 mr-4">
+      <div className="mb-4 mr-4 hidden sm:block">
         <Icons.logo className="w-8 h-8" />
       </div>
       <nav className="flex flex-col gap-2 overflow-auto">

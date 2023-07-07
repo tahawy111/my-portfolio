@@ -23,20 +23,48 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async signIn({user}) {
+    async signIn({ user }) {
       // console.log(user);
-      const email = user.email as string
+      const email = user.email as string;
 
       console.log(allowedEmails.split("|").includes(email));
-      
+
       if (allowedEmails.split("|").includes(email)) {
         console.log(true);
-        
+
         return true;
       } else {
         console.log(false);
         return false;
       }
+    },
+    async session({ token, session }) {
+      if (token) {
+        session.user.id = token.id;
+        session.user.name = token.name;
+        session.user.email = token.email;
+        session.user.image = token.picture;
+        session.user.username = token.username;
+      }
+
+      return session;
+    },
+
+    async jwt({ token, user }) {
+      const dbUser = await db.user.findFirst({ where: { email: token.email } });
+
+      if (!dbUser) {
+        token.id = user!.id;
+        return token;
+      }
+
+
+      return {
+        id: dbUser.id,
+        name: dbUser.name,
+        email: dbUser.email,
+        picture: dbUser.image,
+      };
     },
     async redirect() {
       return "/admin";
