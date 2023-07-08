@@ -2,13 +2,9 @@ import { getAuthSession } from "@/lib/auth";
 import connectDB from "@/lib/database";
 import { moveItem } from "@/lib/utils";
 import { updateSkillOrderValidator } from "@/lib/validators/skillValidator";
+import Skill from "@/models/skillModel";
 import User from "@/models/userModel";
-import { Skill, Image } from "@prisma/client";
 import { z } from "zod";
-
-
-
- ;
 
 export async function PUT(req: Request) {
   try {
@@ -21,9 +17,7 @@ export async function PUT(req: Request) {
     const body = await req.json();
     const { index, type } = updateSkillOrderValidator.parse(body);
 
-    const user = await User.findById(session.user._id).populate({
-      path: "skills",
-    });
+    const user = await User.findById(session.user._id).populate("skills")
 
     if (!user) return new Response("Unauthorized", { status: 401 });
 
@@ -33,7 +27,9 @@ export async function PUT(req: Request) {
       index
     );
 
-    await User.findByIdAndUpdate(session.user._id, { $set: userSkills });
+    await User.findByIdAndUpdate(session.user._id, {
+      skills: userSkills.map((skill) => skill._id),
+    });
 
     return new Response("OK");
   } catch (error) {

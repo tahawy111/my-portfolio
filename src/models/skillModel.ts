@@ -33,8 +33,6 @@ const SkillSchema = new Schema<SkillDocument>(
   }
 );
 
-const Skill =
-  (models.Skill as Model<SkillDocument>) ||
-  model<SkillDocument>("skill", SkillSchema);
+const Skill = (models.skill as Model<SkillDocument>) || model<SkillDocument>("skill", SkillSchema);
 
 export default Skill;

@@ -1,12 +1,10 @@
 "use client";
-import { Image as skillImageType, Skill } from "@prisma/client";
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import axios from "axios";
 import { moveItem } from "@/lib/utils";
 import { ISkill } from "@/models/skillModel";
-
 
 interface SkillsTableProps {
   skills: ISkill[];
@@ -39,12 +37,14 @@ export default function SkillsTable({ skills }: SkillsTableProps) {
           >
             <div className="flex items-center gap-3">
               <span>{skill.skillName}</span>
-              <Image
-                src={skill.skillIcon.url}
-                alt={skill.skillName}
-                width={50}
-                height={50}
-              />
+              {skill.skillIcon?.url && (
+                <Image
+                  src={skill.skillIcon.url}
+                  alt={skill.skillName}
+                  width={50}
+                  height={50}
+                />
+              )}
             </div>
             <div className="">
               <ArrowBigUp

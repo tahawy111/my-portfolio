@@ -2,10 +2,9 @@ import { getAuthSession } from "@/lib/auth";
 import connectDB from "@/lib/database";
 import { skillValidator } from "@/lib/validators/skillValidator";
 import Skill from "@/models/skillModel";
+import User from "@/models/userModel";
 import { z } from "zod";
 
-
-  ;
 export async function POST(req: Request) {
   try {
     const session = await getAuthSession();
@@ -19,7 +18,17 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { skillName, skillIcon } = skillValidator.parse(body);
 
-    const newSkill = await Skill.create({ skillName, skillIcon })
+    const newSkill = await Skill.create({
+      skillName,
+      skillIcon,
+      user: session.user._id,
+    });
+
+    await User.findByIdAndUpdate(session.user._id, {
+      $push: {
+        skills: newSkill._id,
+      },
+    });
 
     return new Response("OK");
   } catch (error) {

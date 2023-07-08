@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-export default function connectDb() {
+export default async function connectDb() {
     const uri = process.env.MONGODB_URI
     if(!uri) throw new Error("Messing MONGODB_URI")
     if(mongoose.connection.readyState === 1) {
-        return mongoose.connection.asPromise();
+        return await mongoose.connection.asPromise();
     } else {
-        return mongoose.connect(uri)
+        return await mongoose.connect(uri)
     }
 
 }

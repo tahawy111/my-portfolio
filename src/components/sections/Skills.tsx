@@ -1,12 +1,19 @@
 import {} from "react";
 import SkillCard from "../SkillCard";
 import { getAuthSession } from "@/lib/auth";
+import User from "@/models/userModel";
+import { ISkill } from "@/models/skillModel";
 
 interface SkillsProps {}
 
 export default async function Skills({}: SkillsProps) {
   const session = await getAuthSession();
 
+  const user = JSON.parse(
+    JSON.stringify(await User?.findById(session?.user._id).populate("skills"))
+  );
+
+  if (!user) return;
 
   return (
     <div
@@ -18,11 +25,11 @@ export default async function Skills({}: SkillsProps) {
       </h1>
 
       <div className="bg-black/50 h-full my-4 mx-28 rounded-2xl p-5 flex flex-wrap gap-3 justify-center">
-        {/* {skills &&
-          skills.length > 0 &&
-          skills.map((skill) => (
+        {user.skills &&
+          user.skills.length > 0 &&
+          user.skills.map((skill: ISkill) => (
             <SkillCard name={skill.skillName} image={skill.skillIcon!.url} />
-          ))} */}
+          ))}
       </div>
     </div>
   );

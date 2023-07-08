@@ -17,7 +17,7 @@ export interface IUser {
   updatedAt?: string;
   provider: string;
   _doc?: object;
-  skills: ISkill[];
+  skills: ISkill[] | string[];
 }
 
 type UserDocument = Document & IUser;
@@ -41,6 +41,6 @@ const UserSchema = new Schema<UserDocument>(
   }
 );
 
-const User = models.User ? (models.User as Model<UserDocument>) : model<UserDocument>("user", UserSchema);
+const User = models.user as Model<UserDocument> || model<UserDocument>("user", UserSchema);
 
 export default User;
