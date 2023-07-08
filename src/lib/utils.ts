@@ -1,10 +1,9 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export const moveItem = (array: any[], to: number, from: number) => {
   const item = array[from];
@@ -12,3 +11,6 @@ export const moveItem = (array: any[], to: number, from: number) => {
   array.splice(to, 0, item);
   return array;
 };
+
+export const wait = (time: number) =>
+  new Promise((resolver) => setTimeout(resolver, time));

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import axios from "axios";
-import { moveItem } from "@/lib/utils";
+import { moveItem, wait } from "@/lib/utils";
 import { ISkill } from "@/models/skillModel";
 
 interface SkillsTableProps {
@@ -12,6 +12,7 @@ interface SkillsTableProps {
 
 export default function SkillsTable({ skills }: SkillsTableProps) {
   const [skillsList, setSkillsList] = useState<ISkill[]>(skills);
+  const [time, setTime] = useState<number>(0)
 
   const handleChangeIndex = async (index: number, type: "UP" | "DOWN") => {
     let arr = [...skillsList];
@@ -21,6 +22,8 @@ export default function SkillsTable({ skills }: SkillsTableProps) {
       index
     );
     setSkillsList(movedArray);
+
+   await wait(3000)
 
     if (index > 0 || index < arr.length - 1)
       await axios.put("/api/skill/updateOrder", { type, index });
