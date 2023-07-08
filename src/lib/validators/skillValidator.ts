@@ -6,3 +6,9 @@ export const skillValidator = z.object({
 });
 
 export type SkillRequest = z.infer<typeof skillValidator>;
+
+export const updateSkillOrderValidator = z.object({
+  type: z.enum(["UP", "DOWN"]),
+  index: z.number().min(0),
+});
+export type updateSkillOrderRequest = z.infer<typeof updateSkillOrderValidator>;

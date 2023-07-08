@@ -1,17 +1,15 @@
 import { NextAuthOptions, getServerSession } from "next-auth";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
 import { nanoid } from "nanoid";
 import Cookies from "js-cookie";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import User, { IUser } from "@/models/userModel";
+import connectDB from "./database";
 
+ connectDB()
 const allowedEmails = process.env.ALLOWED_EMAILS!;
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
-  session: {
-    strategy: "jwt",
-  },
   pages: {
     signIn: "/sign-in",
   },
@@ -23,48 +21,24 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async signIn({ user }) {
-      // console.log(user);
-      const email = user.email as string;
-
-      console.log(allowedEmails.split("|").includes(email));
-
-      if (allowedEmails.split("|").includes(email)) {
-        console.log(true);
-
-        return true;
-      } else {
-        console.log(false);
-        return false;
+    async signIn({ user, account, profile, email, credentials }) {
+      if (account?.type === "oauth") {
+        return await signInWithOAuth({ account, profile });
       }
+
+      return true;
     },
-    async session({ token, session }) {
-      if (token) {
-        session.user.id = token.id;
-        session.user.name = token.name;
-        session.user.email = token.email;
-        session.user.image = token.picture;
-        session.user.username = token.username;
-      }
+    async jwt({ token, trigger, session }) {
 
+      const user = await getUserByEmail({ email: token.email });
+
+      token.user = user;
+
+      return token;
+    },
+    session({ session, token }) {
+      session.user = token.user as IUser
       return session;
-    },
-
-    async jwt({ token, user }) {
-      const dbUser = await db.user.findFirst({ where: { email: token.email } });
-
-      if (!dbUser) {
-        token.id = user!.id;
-        return token;
-      }
-
-
-      return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-        picture: dbUser.image,
-      };
     },
     async redirect() {
       return "/admin";
@@ -73,3 +47,35 @@ export const authOptions: NextAuthOptions = {
 };
 
 export const getAuthSession = () => getServerSession(authOptions);
+
+// --------------------------------------------
+async function signInWithOAuth({
+  account,
+  profile,
+}: {
+  account: any;
+  profile: any;
+}) {
+  const user = await User.findOne({ email: profile.email });
+
+  if (user) return true; // signIn
+
+  // if !user => sign up => sign in
+  const newUser = new User({
+    name: profile.name,
+    email: profile.email,
+    image: profile.picture,
+    provider: account.provider,
+  });
+
+  console.log({ newUser });
+  await newUser.save();
+  return true;
+}
+
+async function getUserByEmail({ email }: { email: any }) {
+  const user = await User.findOne({ email }).select("-password");
+
+  if (!user) throw new Error("Email does not exist!");
+  return { ...user._doc, _id: user._id.toString() };
+}

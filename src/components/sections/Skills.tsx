@@ -1,6 +1,5 @@
 import {} from "react";
 import SkillCard from "../SkillCard";
-import { db } from "@/lib/db";
 import { getAuthSession } from "@/lib/auth";
 
 interface SkillsProps {}
@@ -8,14 +7,7 @@ interface SkillsProps {}
 export default async function Skills({}: SkillsProps) {
   const session = await getAuthSession();
 
-  const skills = await db.skill.findMany({
-    where: {
-      userId: session?.user.id,
-    },
-    include: {
-      skillIcon: true,
-    },
-  });
+
   return (
     <div
       id="skills"
@@ -26,11 +18,11 @@ export default async function Skills({}: SkillsProps) {
       </h1>
 
       <div className="bg-black/50 h-full my-4 mx-28 rounded-2xl p-5 flex flex-wrap gap-3 justify-center">
-        {skills &&
+        {/* {skills &&
           skills.length > 0 &&
           skills.map((skill) => (
             <SkillCard name={skill.skillName} image={skill.skillIcon!.url} />
-          ))}
+          ))} */}
       </div>
     </div>
   );
