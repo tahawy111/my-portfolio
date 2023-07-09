@@ -53,7 +53,7 @@ export default function AddSkillForm({
     try {
       e.preventDefault();
       setIsLoading(true);
-      
+
       console.log(formData);
       if (formData.skillName === "" || !formData.skillIcon)
         return toast({
@@ -67,7 +67,7 @@ export default function AddSkillForm({
         CLOUDINARY_UPLOAD_PRESET,
       });
 
-      await axios.post(`/api/skill`, {
+      const { data } = await axios.post(`/api/skill`, {
         ...payload,
         skillIcon: imgRes,
       });
@@ -75,7 +75,7 @@ export default function AddSkillForm({
         return { ...prev, skillIcon: null, skillName: "" };
       });
       (document.getElementById(imageInputId) as HTMLInputElement).value = "";
-      router.refresh();
+      window.location.reload()
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
@@ -121,7 +121,11 @@ export default function AddSkillForm({
           onChange={handleImageInputChange}
         />
       </div>
-      <Button isLoading={isLoading} disabled={isLoading} className="w-full sm:w-[30%] mb-3">
+      <Button
+        isLoading={isLoading}
+        disabled={isLoading}
+        className="w-full sm:w-[30%] mb-3"
+      >
         Add New Skill
       </Button>
     </form>
