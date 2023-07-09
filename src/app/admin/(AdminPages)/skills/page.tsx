@@ -1,3 +1,4 @@
+"use client"
 import AddSkillForm from "@/components/AddSkillForm";
 import AdminLayout from "@/components/AdminLayout";
 import SkillsTable from "@/components/SkillsTable";
@@ -9,15 +10,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // import User from "@/models/userModel";
 
-export default async function page() {
-  const session = await getAuthSession();
-  
-  await Skill.find();
-  const user = JSON.parse(
-    JSON.stringify(await User?.findById(session?.user._id).populate("skills"))
-  );
-
-  if (!user) return;
+export default function page() {
+  const [skills, setSkills] = useState<ISkill[]>([]);
+  useEffect(() => {
+    axios
+      .get(`/api/skill?id=${process.env.NEXT_PUBLIC_USER_ID}`)
+      .then(({ data }) => {
+        console.log(data);
+        setSkills(data);
+      });
+  }, []);
 
   return (
     <AdminLayout>
@@ -26,7 +28,7 @@ export default async function page() {
         CLOUDINARY_CLOUD_NAME={`${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}`}
         CLOUDINARY_UPLOAD_PRESET={`${process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}`}
       />
-      {user?.skills && <SkillsTable skills={user.skills as ISkill[]} />}
+      {skills && skills.length > 0 && <SkillsTable skills={skills as ISkill[]} />}
     </AdminLayout>
   );
 }

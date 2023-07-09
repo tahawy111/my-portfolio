@@ -27,6 +27,9 @@ export async function PUT(req: Request) {
       index
     );
 
+    console.log(userSkills);
+    
+
     await User.findByIdAndUpdate(session.user._id, {
       skills: userSkills.map((skill) => skill._id),
     });
