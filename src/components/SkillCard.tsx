@@ -12,7 +12,7 @@ export default function SkillCard({ image, name }: SkillCardProps) {
       <div className="justify-center flex my-3 w-10 h-10 mx-auto">
       <Image width={50} height={50} src={image} alt="Skill Image"/>
       </div>
-      <h2 className="text-3xl">{name}</h2>
+      <h2 className="overflow-hidden">{name}</h2>
     </div>
   );
 }

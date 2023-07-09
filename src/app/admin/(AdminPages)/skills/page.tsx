@@ -4,17 +4,18 @@ import SkillsTable from "@/components/SkillsTable";
 import { getAuthSession } from "@/lib/auth";
 import connectDB from "@/lib/database";
 import Skill, { ISkill } from "@/models/skillModel";
-import User from "@/models/userModel";
+import User, { IUser } from "@/models/userModel";
+import axios from "axios";
+import { useEffect, useState } from "react";
 // import User from "@/models/userModel";
 
-
 export default async function page() {
-//  await  ;
   const session = await getAuthSession();
-
-  if(!session) return
-
-  const user = JSON.parse(JSON.stringify(await User?.findById(session?.user._id).populate("skills")))
+  
+  await Skill.find();
+  const user = JSON.parse(
+    JSON.stringify(await User?.findById(session?.user._id).populate("skills"))
+  );
 
   if (!user) return;
 
@@ -25,7 +26,7 @@ export default async function page() {
         CLOUDINARY_CLOUD_NAME={`${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}`}
         CLOUDINARY_UPLOAD_PRESET={`${process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}`}
       />
-      <SkillsTable skills={user.skills} />
+      {user?.skills && <SkillsTable skills={user.skills as ISkill[]} />}
     </AdminLayout>
   );
 }

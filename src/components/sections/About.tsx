@@ -9,11 +9,11 @@ interface AboutProps {}
 
 export default function About({}: AboutProps) {
   return (
-    <motion.div id="about" className={`flex flex-col w-full h-[calc(100vh-63px)] mt-20`}>
-      <h1 className="text-5xl font-bold mx-auto mt-20">
+    <motion.div id="about" className={`flex flex-col w-full`}>
+      <h1 className="text-5xl font-bold mx-auto">
         About <span className="text-sky-500 underline underline-offset-8">Me</span>
       </h1>
-      <div className="flex justify-center gap-16 flex-wrap items-center h-full">
+      <div className="flex justify-center gap-16 flex-wrap items-center h-full m-20">
         <Tilt options={defaultTiltOptions}>
           <motion.div
             initial={{ x: "-20vw", opacity: 0 }}
@@ -32,7 +32,7 @@ export default function About({}: AboutProps) {
         <motion.div
           initial={{ x: "20vw", opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          className=""
+          className="mx-3 text-center md:text-start mt-10"
         >
           <h1 className="text-3xl font-bold">I'm Amer</h1>
           <h1 className="font-bold">Full Stack Developer</h1>
