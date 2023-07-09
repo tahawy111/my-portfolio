@@ -56,6 +56,12 @@ export async function DELETE(req: Request) {
 
     await Skill.findByIdAndDelete(id);
 
+    await User.findByIdAndUpdate(session.user._id, {
+      $pull: {
+        skills: id,
+      },
+    });
+
     return new Response("OK");
   } catch (error) {
     console.log(error);

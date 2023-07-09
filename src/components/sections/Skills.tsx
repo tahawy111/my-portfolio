@@ -24,7 +24,7 @@ export default async function Skills({}: SkillsProps) {
         💻 Skills & <span className="text-rose-800">Abilities</span>
       </h1>
 
-      <div className="bg-black/50 h-full my-4 mx-28 rounded-2xl p-5 flex flex-wrap gap-3 justify-center">
+      <div className="bg-black/50 h-full my-4 mx-28 rounded-2xl p-5 grid grid-cols-6 justify-items-center gap-3 justify-center">
         {user.skills &&
           user.skills.length > 0 &&
           user.skills.map((skill: ISkill) => (
