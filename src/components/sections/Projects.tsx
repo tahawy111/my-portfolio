@@ -30,7 +30,7 @@ export default function Projects({}: ProjectsProps) {
           {projects &&
             projects.length > 0 &&
             projects.map((project) => (
-              <div className="">
+              <div key={project._id} className="">
                 <ProjectCard key={project._id} project={project} />
               </div>
             ))}
