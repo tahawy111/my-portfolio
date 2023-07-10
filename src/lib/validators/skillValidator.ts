@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const skillValidator = z.object({
   skillName: z.string(),
-  skillIcon: z.any(),
+  skillIcon: z.object({ url: z.string(), public_id: z.string() }),
 });
 
 export type SkillRequest = z.infer<typeof skillValidator>;

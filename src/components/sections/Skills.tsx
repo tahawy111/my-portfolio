@@ -24,7 +24,7 @@ export default function Skills({}: SkillsProps) {
       className={`flex flex-col w-full mt-20 mainGradiant`}
     >
       <h1 id="about" className="text-5xl font-bold mx-auto my-3 text-white">
-        💻 Skills & <span className="text-rose-800">Abilities</span>
+        💻💪 Skills & <span className="text-rose-800">Abilities</span>
       </h1>
 
       <div className="bg-black/50 h-full my-4 mx-28 rounded-2xl p-5 flex flex-wrap gap-5 justify-center">

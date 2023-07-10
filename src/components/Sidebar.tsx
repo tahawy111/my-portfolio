@@ -49,25 +49,21 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
           href={`/admin/skills`}
           className={pathname.includes("/admin/skills") ? activeLink : inActiveLink}
         >
-          <Wrench
-            className={
-              pathname.includes("/admin/skills") ? activeIcon : inActiveIcon
-            }
-          />
+          💪
           Skills
         </Link>
         <Link
-          href={`/categories`}
+          href={`/admin/projects`}
           className={
-            pathname.includes("/categories") ? activeLink : inActiveLink
+            pathname.includes("/admin/projects") ? activeLink : inActiveLink
           }
         >
-          <List
+          <Icons.tools
             className={
-              pathname.includes("/categories") ? activeIcon : inActiveIcon
+              pathname.includes("/projects") ? activeIcon : inActiveIcon
             }
           />
-          Categories
+          Projects
         </Link>
         <Link
           href={`/orders`}

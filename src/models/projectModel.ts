@@ -10,6 +10,7 @@ export interface IProject {
   title: string;
   image: ImgType;
   codeLink: string;
+  description: string;
   viewLink: string;
   createdAt?: string;
   updatedAt?: string;
@@ -21,6 +22,7 @@ type ProjectDocument = Document & IProject;
 const ProjectSchema = new Schema<ProjectDocument>(
   {
     title: { type: String, required: true, unique: true },
+    description: { type: String, required: true },
     image: {
       public_id: { type: String, required: true },
       url: { type: String, required: true },
@@ -34,7 +36,7 @@ const ProjectSchema = new Schema<ProjectDocument>(
 );
 
 const Project =
-  (models.skill as Model<ProjectDocument>) ||
-  model<ProjectDocument>("skill", ProjectSchema);
+  (models.project as Model<ProjectDocument>) ||
+  model<ProjectDocument>("project", ProjectSchema);
 
 export default Project;

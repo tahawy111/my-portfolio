@@ -60,9 +60,9 @@ export default function AddSkillForm({
           title: "Please Enter Your Skill",
           variant: "destructive",
         });
-      const payload: SkillRequest = formData;
+      const payload = formData;
 
-      const imgRes = await imageUpload(payload.skillIcon, {
+      const imgRes = await imageUpload(payload.skillIcon as File, {
         CLOUDINARY_CLOUD_NAME,
         CLOUDINARY_UPLOAD_PRESET,
       });
