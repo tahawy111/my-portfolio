@@ -10,9 +10,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/Separator";
 
-interface pageProps {}
+interface PageProps {}
 
-export default function page({}: pageProps) {
+export default function Page({}: PageProps) {
   const [projects, setProjects] = useState<IProject[]>([]);
   useEffect(() => {
     axios

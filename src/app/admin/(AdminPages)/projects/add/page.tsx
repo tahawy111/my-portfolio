@@ -10,9 +10,9 @@ import { ArrowLeftCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-interface pageProps {}
+interface PageProps {}
 
-export default function page({}: pageProps) {
+export default function Page({}: PageProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<{

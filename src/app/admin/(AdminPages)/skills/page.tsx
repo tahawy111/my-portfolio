@@ -7,7 +7,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // import User from "@/models/userModel";
 
-export default function page() {
+export default function Page() {
   const [skills, setSkills] = useState<ISkill[]>([]);
   useEffect(() => {
     axios
