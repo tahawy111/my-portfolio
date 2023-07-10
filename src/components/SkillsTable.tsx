@@ -14,8 +14,6 @@ interface SkillsTableProps {
 
 export default function SkillsTable({ skills }: SkillsTableProps) {
   const [skillsList, setSkillsList] = useState<ISkill[]>(skills);
-  const [time, setTime] = useState<number>(0);
-  const router = useRouter();
 
   const handleChangeIndex = async (index: number, type: "UP" | "DOWN") => {
     let arr = [...skillsList];

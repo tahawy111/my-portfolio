@@ -8,9 +8,9 @@ interface ProjectsTableProps {
 }
 
 export default function ProjectsTable({projects}: ProjectsTableProps) {
-  return <>
+  return <div className="">
   
   <DataTable columns={columns} data={projects}  />
 
-  </>
+  </div>
 }

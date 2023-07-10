@@ -35,11 +35,11 @@ export default function AdminLayout({
             <Icons.logo className="w-8 h-8" />
           </div>
         </div>
-        <div className={cn(`flex`, className)}>
+        <div className="flex">
           <Sidebar show={showNav} />
 
           <div className={"flex-grow m-10"}>
-            <div {...props}>{children}</div>
+              {children}
           </div>
         </div>
       </div>

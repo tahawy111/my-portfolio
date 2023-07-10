@@ -157,7 +157,7 @@ export default function page({}: pageProps) {
             disabled={isLoading}
             className="w-full mb-3"
           >
-            Add New Skill
+            Add New Project
           </Button>
         </form>
       </div>

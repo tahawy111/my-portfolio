@@ -29,7 +29,7 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
       className={cn(
         `text-gray-500 p-4 fixed w-full bg-gray-100 z-20 h-screen overflow-auto ${
           show ? "left-0" : "-left-full"
-        } md:static md:w-auto transition-al`,
+        } md:static md:w-auto transition-all`,
         className
       )}
       {...props}
