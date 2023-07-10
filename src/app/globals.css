@@ -83,3 +83,7 @@
   font-family: "Cairo", sans-serif;
   scroll-behavior: smooth;
 }
+
+.mainGradiant {
+  @apply bg-gradient-to-r from-sky-500 to-violet-500
+}
