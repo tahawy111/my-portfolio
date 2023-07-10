@@ -1,6 +1,6 @@
 "use client";
 import {} from "react";
-import { Button, buttonVariants } from "./ui/Button";
+import { buttonVariants } from "./ui/Button";
 import { Eye, Code2 } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -30,9 +30,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <h1 className="text-2xl text-center font-extrabold bg-neutral-900 text-white py-3">
             {project.title}
           </h1>
-          <p className="py-3 px-1">
-            {project.description}
-          </p>
+          <p className="py-3 px-1">{project.description}</p>
           <div className="flex justify-between px-1 py-3">
             <a
               href={project.codeLink}

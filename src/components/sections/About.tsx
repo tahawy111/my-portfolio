@@ -1,7 +1,6 @@
 "use client";
 import { defaultTiltOptions } from "@/lib/config";
 import Image from "next/image";
-import { useRef } from "react";
 import { Tilt } from "react-tilt";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -11,14 +10,15 @@ export default function About({}: AboutProps) {
   return (
     <motion.div id="about" className={`flex flex-col w-full`}>
       <h1 className="text-5xl font-bold mx-auto">
-        About <span className="text-sky-500 underline underline-offset-8">Me</span>
+        About{" "}
+        <span className="text-sky-500 underline underline-offset-8">Me</span>
       </h1>
-      <div className="flex justify-center gap-16 flex-wrap items-center h-full m-20">
+      <div className="flex justify-center gap-16 flex-wrap items-center m-20 overflow-hidden">
         <Tilt options={defaultTiltOptions}>
           <motion.div
             initial={{ x: "-20vw", opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            className="w-72 h-72 grayscale hover:grayscale-0 group"
+            className="w-72 grayscale hover:grayscale-0 group"
           >
             <Image
               alt="Personal Image"
@@ -43,8 +43,14 @@ export default function About({}: AboutProps) {
             Stack. Working for myself to improve my skills. Love to build
             Full-Stack clones.
           </p>
-          <p className="my-3"><span className="text-cyan-600 font-semibold">Email :</span> amertahawy111@gmail.com</p>
-          <p><span className="text-cyan-600 font-semibold">Place :</span> Alexandria, Egypt</p>
+          <p className="my-3">
+            <span className="text-cyan-600 font-semibold">Email :</span>{" "}
+            amertahawy111@gmail.com
+          </p>
+          <p>
+            <span className="text-cyan-600 font-semibold">Place :</span>{" "}
+            Alexandria, Egypt
+          </p>
         </motion.div>
       </div>
     </motion.div>

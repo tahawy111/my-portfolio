@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Textarea } from "../ui/Textarea";
 import axios from "axios";
 import { toast } from "@/hooks/use-toast";
+import { Send } from "lucide-react";
 
 interface GetInTouchProps {}
 
@@ -68,7 +69,7 @@ export default function GetInTouch({}: GetInTouchProps) {
         Get In <span className="text-rose-800">Touch</span>
       </h1>
 
-      <div className="flex items-center justify-center gap-10">
+      <div className="flex items-center justify-center gap-10 flex-wrap">
         <Image
           className="-translate-y-6"
           width={500}
@@ -76,10 +77,7 @@ export default function GetInTouch({}: GetInTouchProps) {
           alt="ContactImage"
           src={`https://res.cloudinary.com/dzdqy3wfg/image/upload/v1689017436/recruitment-img5_dh2d1y.png`}
         />
-        <form
-          onSubmit={handleSubmit}
-          className="max-w-sm w-full p-5"
-        >
+        <form onSubmit={handleSubmit} className="max-w-sm w-full p-5">
           <div className="flex w-full flex-col my-3">
             <label htmlFor="">Name</label>
             <Input
@@ -118,7 +116,9 @@ export default function GetInTouch({}: GetInTouchProps) {
             />
           </div>
 
-          <Button isLoading={isLoading} disabled={isLoading} className="w-full mb-3">Send Message</Button>
+          <Button isLoading={isLoading} disabled={isLoading} className="w-full">
+            <Send className="mx-1" /> Send Message
+          </Button>
         </form>
       </div>
     </div>

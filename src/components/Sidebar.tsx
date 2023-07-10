@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import { FC, useEffect } from "react";
-import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import { FC } from "react";
+import { signOut } from "next-auth/react";
 import { Icons } from "./Icons";
-import { Archive, Home, List, LogOut, Menu, Settings, X } from "lucide-react";
-import { Wrench } from "lucide-react";
+import { Home, LogOut, Menu, Settings, X } from "lucide-react";
 
 interface SidebarProps
   extends React.DetailedHTMLProps<
@@ -22,8 +21,6 @@ const Sidebar: FC<SidebarProps> = ({
   setShow,
   ...props
 }): any => {
-  const { data: session, status } = useSession();
-  const { push } = useRouter();
   const pathname = usePathname();
   const inActiveLink = "flex gap-1 p-1 items-center pr-10";
   const activeLink = `${inActiveLink} bg-highlight text-black rounded-sm bg-pink-100`;

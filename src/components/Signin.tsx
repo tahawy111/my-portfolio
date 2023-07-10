@@ -1,6 +1,5 @@
 import { } from 'react';
 import { Icons } from './Icons';
-import Link from 'next/link';
 import UserAuthForm from './UserAuthForm';
 
 export default function SignIn() {

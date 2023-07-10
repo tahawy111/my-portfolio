@@ -1,8 +1,6 @@
-import mongoose, { model, Schema, models, Document, Model } from "mongoose";
+import { model, Schema, models, Document, Model } from "mongoose";
 import { IUser } from "./userModel";
 import { ImgType } from "@/types/types";
-
-
 
 export interface ISkill {
   _id: string;
@@ -30,6 +28,8 @@ const SkillSchema = new Schema<SkillDocument>(
   }
 );
 
-const Skill = (models.skill as Model<SkillDocument>) || model<SkillDocument>("skill", SkillSchema);
+const Skill =
+  (models.skill as Model<SkillDocument>) ||
+  model<SkillDocument>("skill", SkillSchema);
 
 export default Skill;

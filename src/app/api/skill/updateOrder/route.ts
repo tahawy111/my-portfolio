@@ -1,8 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
-import connectDB from "@/lib/database";
 import { moveItem } from "@/lib/utils";
 import { updateSkillOrderValidator } from "@/lib/validators/skillValidator";
-import Skill from "@/models/skillModel";
 import User from "@/models/userModel";
 import { z } from "zod";
 

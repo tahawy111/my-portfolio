@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 
 import { Icons } from "../Icons";
 import { Tilt } from "react-tilt";
-import { Button, buttonVariants } from "../ui/Button";
+import { buttonVariants } from "../ui/Button";
 import {
   ArrowDown,
   Facebook,
@@ -28,7 +28,7 @@ export default function Home({}: HomeProps) {
       id="home"
       className={`flex flex-col w-full justify-center h-[calc(100vh-63px)]`}
     >
-      <div className="flex flex-wrap gap-y-16 xl:grid-cols-2 items-center justify-between gap-6 md:mx-32 mt-3">
+      <div className="flex flex-wrap gap-y-16 xl:grid-cols-2 items-center justify-between gap-6 md:mx-32 mt-16">
         <div className="flex flex-col justify-center ml-10 gap-y-3">
           <h1 className="text-4xl font-bold md:text-6xl justify-self-start">
             Hi There,
@@ -45,26 +45,25 @@ export default function Home({}: HomeProps) {
             className="text-3xl font-bold mt-6 justify-self-start"
           >
             I'm a{" "}
-              <TypeAnimation
-                className="text-rose-900"
-
-                sequence={[
-                  // Same substring at the start will only be typed out once, initially
-                  "Frontend Developer",
-                  1000, // wait 1s before replacing "Mice" with "Hamsters"
-                  "Backend Developer",
-                  1000,
-                  "Full Stack Developer",
-                  1000,
-                  "Javascript Developer",
-                  1000,
-                  "Typescript Developer",
-                  1000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              />
+            <TypeAnimation
+              className="text-rose-900"
+              sequence={[
+                // Same substring at the start will only be typed out once, initially
+                "Frontend Developer",
+                1000, // wait 1s before replacing "Mice" with "Hamsters"
+                "Backend Developer",
+                1000,
+                "Full Stack Developer",
+                1000,
+                "Javascript Developer",
+                1000,
+                "Typescript Developer",
+                1000,
+              ]}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+            />
           </motion.h1>
           <a
             href="#about"

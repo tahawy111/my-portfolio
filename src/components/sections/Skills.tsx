@@ -1,7 +1,6 @@
 "use client";
 import SkillCard from "../SkillCard";
-import User, { IUser } from "@/models/userModel";
-import Skill, { ISkill } from "@/models/skillModel";
+import { ISkill } from "@/models/skillModel";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -23,7 +22,7 @@ export default function Skills({}: SkillsProps) {
       id="skills"
       className={`flex flex-col w-full bg-gradient-to-r from-sky-500 to-violet-500 space-y-14 py-20 mt-10`}
     >
-      <h1 id="about" className="text-5xl font-bold mx-auto my-3 text-white">
+      <h1 id="about" className="text-5xl font-bold mx-auto my-3 text-white text-center">
         💻💪 Skills & <span className="text-rose-800">Tools</span>
       </h1>
 

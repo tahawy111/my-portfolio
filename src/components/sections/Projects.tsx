@@ -18,48 +18,24 @@ export default function Projects({}: ProjectsProps) {
   }, []);
 
   return (
-    <div className={`flex flex-col w-full pt-5 bg-gradient-to-r to-violet-500 from-sky-500 space-y-14 py-40`}>
-      <h1 id="projects" className="text-5xl font-bold text-center text-white">
-      🛠💻  Projects <span className="text-rose-800">Made</span>
-      </h1>
+    <>
+      <div
+        className={`flex flex-col w-full pt-5 bg-gradient-to-r to-violet-500 from-sky-500 py-40`}
+      >
+        <h1 id="projects" className="text-5xl font-bold text-center text-white">
+          🛠💻 Projects <span className="text-rose-800">Made</span>
+        </h1>
 
-      <div className="flex flex-wrap justify-center gap-x-3">
-        {projects &&
-          projects.length > 0 &&
-          projects.map((project) => (
-            <div className="w-fit">
-              <ProjectCard key={project._id} project={project} />
-            </div>
-          ))}
-
-        {/* <div className="w-fit">
-        <ProjectCard />
+        <div className="flex flex-wrap justify-center gap-x-3">
+          {projects &&
+            projects.length > 0 &&
+            projects.map((project) => (
+              <div className="">
+                <ProjectCard key={project._id} project={project} />
+              </div>
+            ))}
+        </div>
       </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div>
-      <div className="w-fit">
-        <ProjectCard />
-      </div> */}
-      </div>
-    </div>
+    </>
   );
 }
