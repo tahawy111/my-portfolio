@@ -2,10 +2,6 @@ import { model, Schema, models, Document, Model } from "mongoose";
 import { ISkill } from "./skillModel";
 import { IProject } from "./projectModel";
 
-export interface ImgType {
-  public_id: string;
-  url: string;
-}
 
 export interface IUser {
   _id: string;

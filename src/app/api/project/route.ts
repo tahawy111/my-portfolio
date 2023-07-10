@@ -46,3 +46,30 @@ export async function POST(req: Request) {
     );
   }
 }
+
+export async function GET(req: Request) {
+  try {
+    const id = new URL(req.url).searchParams.get("id");
+
+    const checkUser = await User.findById(id)
+    await Project.findById(checkUser?.projects[0])
+    const user = await User.findById(id).populate("projects")
+
+    if (!user) return new Response("Unauthorized", { status: 401 });
+    
+
+    return new Response(JSON.stringify(user.projects));
+  } catch (error) {
+    console.log(error);
+
+    if (error instanceof z.ZodError) {
+      return new Response("Invalid request data passed.", { status: 422 });
+    }
+    return new Response(
+      "Could not add skill at this time, please try again later.",
+      {
+        status: 500,
+      }
+    );
+  }
+}

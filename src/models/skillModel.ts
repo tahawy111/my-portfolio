@@ -1,10 +1,8 @@
 import mongoose, { model, Schema, models, Document, Model } from "mongoose";
 import { IUser } from "./userModel";
+import { ImgType } from "@/types/types";
 
-export interface ImgType {
-  public_id: string;
-  url: string;
-}
+
 
 export interface ISkill {
   _id: string;

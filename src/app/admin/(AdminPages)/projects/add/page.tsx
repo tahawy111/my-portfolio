@@ -2,6 +2,7 @@
 import AdminLayout from "@/components/AdminLayout";
 import { Button, buttonVariants } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { Separator } from "@/components/ui/Separator";
 import { toast } from "@/hooks/use-toast";
 import { imageUpload } from "@/lib/ImageUpload";
 import { cn } from "@/lib/utils";
@@ -89,12 +90,16 @@ export default function page({}: pageProps) {
             Adding a new Project
           </h1>
 
-          <Button onClick={() => router.back()} variant={"destructive"} className="font-bold group">
+          <Button
+            onClick={() => router.back()}
+            variant={"destructive"}
+            className="font-bold group"
+          >
             <ArrowLeftCircle className="group-hover:-translate-x-1 mr-1 transition-transform" />{" "}
             Cancel
           </Button>
         </div>
-
+        <Separator className="my-3" />
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-xl mx-auto border p-5 rounded-sm"

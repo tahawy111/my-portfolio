@@ -1,16 +1,12 @@
+import { ImgType } from "@/types/types";
 import { model, Schema, models, Document, Model } from "mongoose";
-
-export interface ImgType {
-  public_id: string;
-  url: string;
-}
 
 export interface IProject {
   _id: string;
   title: string;
   image: ImgType;
-  codeLink: string;
   description: string;
+  codeLink: string;
   viewLink: string;
   createdAt?: string;
   updatedAt?: string;
