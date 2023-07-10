@@ -73,3 +73,36 @@ export async function GET(req: Request) {
     );
   }
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const session = await getAuthSession();
+    const id = new URL(req.url).searchParams.get("id");
+
+    if (!session?.user) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+    await Project.findByIdAndDelete(id);
+
+    await User.findByIdAndUpdate(session.user._id, {
+      $pull: {
+        skills: id,
+      },
+    });
+
+    return new Response("OK");
+  } catch (error) {
+    console.log(error);
+
+    if (error instanceof z.ZodError) {
+      return new Response("Invalid request data passed.", { status: 422 });
+    }
+    return new Response(
+      "Could not add skill at this time, please try again later.",
+      {
+        status: 500,
+      }
+    );
+  }
+}

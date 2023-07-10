@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { FC, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Icons } from "./Icons";
-import { Archive, Home, List, LogOut, Settings } from "lucide-react";
+import { Archive, Home, List, LogOut, Menu, Settings, X } from "lucide-react";
 import { Wrench } from "lucide-react";
 
 interface SidebarProps
@@ -13,9 +13,15 @@ interface SidebarProps
     HTMLElement
   > {
   show: boolean;
+  setShow: (param: boolean) => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
+const Sidebar: FC<SidebarProps> = ({
+  className,
+  show,
+  setShow,
+  ...props
+}): any => {
   const { data: session, status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
@@ -29,7 +35,7 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
       className={cn(
         `text-gray-500 p-4 fixed w-full bg-gray-100 z-20 h-screen overflow-auto ${
           show ? "left-0" : "-left-full"
-        } md:static md:w-auto transition-all`,
+        } md:w-auto transition-all`,
         className
       )}
       {...props}
@@ -38,19 +44,31 @@ const Sidebar: FC<SidebarProps> = ({ className, show, ...props }): any => {
         <Icons.logo className="w-8 h-8" />
       </div>
       <nav className="flex flex-col gap-2 overflow-auto">
-        <Link
-          href={`/admin`}
-          className={pathname === "/admin" ? activeLink : inActiveLink}
-        >
-          <Home className={pathname === "/admin" ? activeIcon : inActiveIcon} />
-          Dashboard
-        </Link>
+        <div className="flex justify-between">
+          <Link
+            href={`/admin`}
+            className={pathname === "/admin" ? activeLink : inActiveLink}
+          >
+            <Home
+              className={pathname === "/admin" ? activeIcon : inActiveIcon}
+            />
+            Dashboard
+          </Link>
+
+          <button
+            className="mx-4 my-3 hidden md:block"
+            onClick={() => setShow(!show)}
+          >
+            {!show ? <Menu className="w-7 h-7" /> : <X className="w-7 h-7" />}
+          </button>
+        </div>
         <Link
           href={`/admin/skills`}
-          className={pathname.includes("/admin/skills") ? activeLink : inActiveLink}
+          className={
+            pathname.includes("/admin/skills") ? activeLink : inActiveLink
+          }
         >
-          💪
-          Skills
+          💪 Skills
         </Link>
         <Link
           href={`/admin/projects`}

@@ -35,11 +35,21 @@ export default function AdminLayout({
             <Icons.logo className="w-8 h-8" />
           </div>
         </div>
-        <div className="flex">
-          <Sidebar show={showNav} />
-
-          <div className={"flex-grow m-10"}>
-              {children}
+        
+        <div className="">
+          <Sidebar show={showNav} setShow={setShowNav} />
+          <div className="">
+          <button
+            className="p-3 md:block hidden"
+            onClick={() => setShowNav((prev) => !prev)}
+          >
+            {!showNav ? (
+              <Menu className="w-7 h-7" />
+            ) : (
+              <X className="w-7 h-7" />
+            )}
+          </button>
+          <div className={"flex-grow m-10"}>{children}</div>
           </div>
         </div>
       </div>

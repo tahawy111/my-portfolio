@@ -8,8 +8,6 @@ import axios from "axios";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ProjectsColumn } from "./columns";
-import { format } from "date-fns";
 import { Separator } from "@/components/ui/Separator";
 
 interface pageProps {}
@@ -24,18 +22,6 @@ export default function page({}: pageProps) {
         setProjects(data);
       });
   }, []);
-
-  const formattedProjects: ProjectsColumn[] = projects.map((project) => ({
-    id: project._id,
-    title: project.title,
-    codeLink: project.codeLink,
-    viewLink: project.viewLink,
-    description: project.description,
-    createdAt: format(new Date(project.createdAt!),"MMMM do, yyyy"),
-    image: project.image,
-  }));
-
-
 
   return (
     <AdminLayout>
@@ -52,7 +38,9 @@ export default function page({}: pageProps) {
 
         <Separator className="my-3" />
 
-        <ProjectsTable projects={formattedProjects} />
+        {projects && projects.length > 0 && (
+          <ProjectsTable projectsList={projects} />
+        )}
       </div>
     </AdminLayout>
   );

@@ -13,15 +13,14 @@ export default function Projects({}: ProjectsProps) {
     axios
       .get(`/api/project?id=${process.env.NEXT_PUBLIC_USER_ID}`)
       .then(({ data }) => {
-        console.log(data);
         setProjects(data);
       });
   }, []);
 
   return (
-    <div className={`flex flex-col w-full pt-20 mainGradiant`}>
+    <div className={`flex flex-col w-full pt-5 bg-gradient-to-r from-violet-500 to-sky-500`}>
       <h1 id="projects" className="text-5xl font-bold text-center text-white">
-        Projects <span className="text-rose-800">Made</span>
+      🛠💻  Projects <span className="text-rose-800">Made</span>
       </h1>
 
       <div className="flex flex-wrap justify-center gap-x-3">

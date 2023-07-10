@@ -37,6 +37,7 @@
     "nanoid": "^4.0.2",
     "next": "13.4.7",
     "next-auth": "^4.22.1",
+    "nodemailer": "^6.9.3",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
@@ -53,6 +54,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.3",
+    "@types/nodemailer": "^6.4.8",
     "@types/react-copy-to-clipboard": "^5.0.4"
   }
 }

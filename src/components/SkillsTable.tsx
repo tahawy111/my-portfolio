@@ -24,7 +24,7 @@ export default function SkillsTable({ skills }: SkillsTableProps) {
     );
     setSkillsList(movedArray);
 
-    await wait(3000);
+    await wait(300);
 
     if (index > 0 || index < arr.length - 1)
       await axios.put("/api/skill/updateOrder", { type, index });

@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+table.basic {
+  @apply w-full text-left bg-white shadow-md rounded-sm;
+}
+table.basic thead tr th {
+  @apply text-sm text-gray-600 uppercase border-b border-gray-200;
+}
+table.basic tbody tr td,
+table.basic thead tr th {
+  @apply px-4 py-1;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -84,6 +95,3 @@
   scroll-behavior: smooth;
 }
 
-.mainGradiant {
-  @apply bg-gradient-to-r from-sky-500 to-violet-500
-}
