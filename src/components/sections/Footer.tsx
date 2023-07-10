@@ -14,7 +14,7 @@ export default function Footer({}: FooterProps) {
     <footer className="bg-neutral-900 text-white py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 container mx-auto md:justify-items-center">
         <div className="border-b sm:border-none">
-          <h1 className="text-2xl">Amer Mohamed's Portfolio</h1>
+          <h1 className="text-2xl">Amer Mohamed&apos;s Portfolio</h1>
           <br />
           <p>
             Thank you for visiting my personal portfolio website. Connect with

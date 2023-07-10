@@ -16,7 +16,7 @@ export default function Page() {
     if (session?.user.email) {
       router.push("/admin");
     }
-  }, [session]);
+  }, [session, router]);
 
   if (session === undefined && status === "loading") {
     return <Loading />;

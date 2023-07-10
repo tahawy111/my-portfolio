@@ -34,7 +34,7 @@ export default function Home({}: HomeProps) {
             Hi There,
           </h1>
           <h1 className="text-4xl font-bold md:text-6xl justify-self-start">
-            I'm Amer <span className="text-yellow-600">Mohamed</span>
+            I&apos;m Amer <span className="text-yellow-600">Mohamed</span>
           </h1>
           <motion.h1
             initial={{ y: -50, opacity: 0 }}
@@ -44,7 +44,7 @@ export default function Home({}: HomeProps) {
             }}
             className="text-3xl font-bold mt-6 justify-self-start"
           >
-            I'm a{" "}
+            I&apos;m a{" "}
             <TypeAnimation
               className="text-rose-900"
               sequence={[

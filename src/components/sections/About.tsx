@@ -34,7 +34,7 @@ export default function About({}: AboutProps) {
           whileInView={{ x: 0, opacity: 1 }}
           className="mx-3 text-center md:text-start mt-10"
         >
-          <h1 className="text-3xl font-bold">I'm Amer</h1>
+          <h1 className="text-3xl font-bold">I&apos;m Amer</h1>
           <h1 className="font-bold">Full Stack Developer</h1>
           <p className="max-w-md mt-5">
             I am a Full-Stack developer based in Alexandria, Egypt. I am very

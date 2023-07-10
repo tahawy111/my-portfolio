@@ -72,7 +72,7 @@ export default function Page({}: PageProps) {
 
       return toast({
         title: "Something went wrong.",
-        description: "Projec wasn't added successfully. Please try again.",
+        description: "Projec wasn&apos;t added successfully. Please try again.",
         variant: "destructive",
       });
     } finally {
