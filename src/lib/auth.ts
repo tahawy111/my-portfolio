@@ -6,8 +6,8 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import User, { IUser } from "@/models/userModel";
 import connectDB from "./database";
 
- connectDB()
-const allowedEmails = process.env.ALLOWED_EMAILS!;
+connectDB();
+const allowedEmails = process.env.ALLOWED_EMAILS!.split("|") as string[];
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -22,6 +22,8 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      if (profile?.email && !allowedEmails.includes(profile.email))
+        return false;
       if (account?.type === "oauth") {
         return await signInWithOAuth({ account, profile });
       }
@@ -29,7 +31,6 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     async jwt({ token, trigger, session }) {
-
       const user = await getUserByEmail({ email: token.email });
 
       token.user = user;
@@ -37,7 +38,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     session({ session, token }) {
-      session.user = token.user as IUser
+      session.user = token.user as IUser;
       return session;
     },
     async redirect() {
@@ -60,6 +61,7 @@ async function signInWithOAuth({
 
   if (user) return true; // signIn
 
+  if (!allowedEmails.includes(profile.email)) return false;
   // if !user => sign up => sign in
   const newUser = new User({
     name: profile.name,
