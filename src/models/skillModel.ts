@@ -12,7 +12,6 @@ export interface ISkill {
   skillIcon: ImgType;
   createdAt?: string;
   updatedAt?: string;
-  provider: string;
   _doc?: object;
   user: IUser;
 }
