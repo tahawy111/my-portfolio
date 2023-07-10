@@ -21,7 +21,7 @@ export default function Skills({}: SkillsProps) {
   return (
     <div
       id="skills"
-      className={`flex flex-col w-full bg-gradient-to-r from-sky-500 to-violet-500 my-40`}
+      className={`flex flex-col w-full bg-gradient-to-r from-sky-500 to-violet-500 space-y-14 py-20 mt-10`}
     >
       <h1 id="about" className="text-5xl font-bold mx-auto my-3 text-white">
         💻💪 Skills & <span className="text-rose-800">Tools</span>

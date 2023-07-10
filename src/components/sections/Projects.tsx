@@ -18,7 +18,7 @@ export default function Projects({}: ProjectsProps) {
   }, []);
 
   return (
-    <div className={`flex flex-col w-full pt-5 bg-gradient-to-r from-violet-500 to-sky-500`}>
+    <div className={`flex flex-col w-full pt-5 bg-gradient-to-r to-violet-500 from-sky-500 space-y-14 py-40`}>
       <h1 id="projects" className="text-5xl font-bold text-center text-white">
       🛠💻  Projects <span className="text-rose-800">Made</span>
       </h1>

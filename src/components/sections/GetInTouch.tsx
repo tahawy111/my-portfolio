@@ -63,7 +63,7 @@ export default function GetInTouch({}: GetInTouchProps) {
   };
 
   return (
-    <div id="skills" className={`flex flex-col w-full my-40 bg-blue-100`}>
+    <div id="skills" className={`flex flex-col w-full py-40 bg-blue-100`}>
       <h1 id="about" className="text-5xl font-bold mx-auto my-3">
         Get In <span className="text-rose-800">Touch</span>
       </h1>
