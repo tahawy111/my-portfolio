@@ -8,11 +8,13 @@ import { cn } from "@/lib/utils";
 import axios, { AxiosError } from "axios";
 import { ArrowLeftCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 interface pageProps {}
 
 export default function page({}: pageProps) {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<{
     title: string;
@@ -56,6 +58,8 @@ export default function page({}: pageProps) {
         ...payload,
         image: imgRes,
       });
+
+      router.back();
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
@@ -80,22 +84,21 @@ export default function page({}: pageProps) {
   return (
     <AdminLayout>
       <div className="flex flex-col w-full">
-        <div className="flex justify-between">
-          <h1 className="text-3xl font-bold my-3">Adding a new Project</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-xl md:text-3xl font-bold my-3">
+            Adding a new Project
+          </h1>
 
-          <Link
-            href={`/admin/projects/add`}
-            className={cn(
-              buttonVariants({ variant: "destructive" }),
-              "font-bold group"
-            )}
-          >
+          <Button onClick={() => router.back()} variant={"destructive"} className="font-bold group">
             <ArrowLeftCircle className="group-hover:-translate-x-1 mr-1 transition-transform" />{" "}
             Cancel
-          </Link>
+          </Button>
         </div>
 
-        <form className="w-full max-w-xl mx-auto border p-5 rounded-sm">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-xl mx-auto border p-5 rounded-sm"
+        >
           <div className="flex w-full flex-col my-3">
             <label htmlFor="">Project Title</label>
             <Input
@@ -107,18 +110,20 @@ export default function page({}: pageProps) {
           </div>
           <div className="flex w-full flex-col my-3">
             <label>Project Screenshot</label>
-            <Input
-              type="file"
-              placeholder="Project Screenshot"
-              name="image"
-              onChange={handleImageInputChange}
-            />
+            <div className="flex">
+              <Input
+                type="file"
+                placeholder="Project Screenshot"
+                name="image"
+                onChange={handleImageInputChange}
+              />
+            </div>
           </div>
           <div className="flex w-full flex-col my-3">
-            <label>Project description</label>
+            <label>Project Description</label>
             <Input
-              placeholder="Title"
-              name="title"
+              placeholder="Description"
+              name="description"
               value={formData.description}
               onChange={handleChange}
             />

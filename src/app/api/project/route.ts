@@ -13,13 +13,15 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { codeLink, image, title, viewLink } = projectValidator.parse(body);
+    const { codeLink, image, title, viewLink, description } =
+      projectValidator.parse(body);
 
     const newProject = await Project.create({
       codeLink,
       image,
       title,
       viewLink,
+      description,
       user: session.user._id,
     });
 

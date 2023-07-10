@@ -10,11 +10,11 @@ interface pageProps {}
 export default function page({}: pageProps) {
   return (
     <AdminLayout>
-      <div className="flex justify-between">
-        <h1 className="text-3xl font-bold my-3">Projects</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl md:text-3xl font-bold my-3">Projects</h1>
         <Link
           href={`/admin/projects/add`}
-          className={cn(buttonVariants({ variant: "outline" }),"font-bold")}
+          className={cn(buttonVariants({ variant: "outline" }), "font-bold")}
         >
           Add New Project <PlusCircle className="mx-1" />
         </Link>
