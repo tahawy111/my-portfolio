@@ -54,17 +54,17 @@ export default function Navbar({}: NavbarProps) {
             >
               <a href="#projects">Projects</a>
             </li>
-            <li
+            {/* <li
               onClick={() => setIsMenuOpen(false)}
               className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
             >
               <a href="#about">Education</a>
-            </li>
+            </li> */}
             <li
               onClick={() => setIsMenuOpen(false)}
               className="h-7 hover:border-b-2 border-b-red-600 w-fit cursor-pointer py-1 md:py-0"
             >
-              <a href="#about">Contact</a>
+              <a href="#contact">Contact</a>
             </li>
             <li
               onClick={() => setIsMenuOpen(false)}

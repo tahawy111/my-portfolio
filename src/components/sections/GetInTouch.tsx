@@ -64,7 +64,7 @@ export default function GetInTouch({}: GetInTouchProps) {
 
   return (
     <div id="skills" className={`flex flex-col w-full py-40 bg-blue-100`}>
-      <h1 id="about" className="text-5xl font-bold mx-auto my-3">
+      <h1 id="contact" className="text-5xl font-bold mx-auto my-3">
         Get In <span className="text-rose-800">Touch</span>
       </h1>
 
@@ -78,7 +78,7 @@ export default function GetInTouch({}: GetInTouchProps) {
         />
         <form
           onSubmit={handleSubmit}
-          className="max-w-sm w-full border p-5 rounded-sm"
+          className="max-w-sm w-full p-5"
         >
           <div className="flex w-full flex-col my-3">
             <label htmlFor="">Name</label>
