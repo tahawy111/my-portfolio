@@ -79,7 +79,7 @@ export default function page({}: pageProps) {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col justify-center w-full">
+      <div className="flex flex-col w-full">
         <div className="flex justify-between">
           <h1 className="text-3xl font-bold my-3">Adding a new Project</h1>
 
@@ -95,7 +95,7 @@ export default function page({}: pageProps) {
           </Link>
         </div>
 
-        <form className="w-full max-w-sm mx-auto border p-5 rounded-sm">
+        <form className="w-full max-w-xl mx-auto border p-5 rounded-sm">
           <div className="flex w-full flex-col my-3">
             <label htmlFor="">Project Title</label>
             <Input
