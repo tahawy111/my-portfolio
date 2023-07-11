@@ -26,12 +26,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           height={9999}
           alt="Project image"
         />
-        <div className="duration-300 group-hover:block group-hover:translate-y-0 absolute -bottom-[43%] group-hover:bottom-0 bg-white/80">
-          <h1 className="text-2xl text-center font-extrabold bg-neutral-900 text-white py-3">
+      <div className="duration-300 group-hover:translate-y-0 -bottom-[50%] group-hover:bottom-0 absolute bg-white/100 h-52 flex justify-between flex-col pb-3">
+          <h1 className="text-xl text-center font-bold bg-neutral-900 text-white py-3">
             {project.title}
           </h1>
           <p className="py-3 px-1">{project.description}</p>
-          <div className="flex justify-between px-1 py-3">
+          <div className="flex justify-between px-1">
             <a
               href={project.codeLink}
               target="_blank"
