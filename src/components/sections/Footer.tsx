@@ -53,7 +53,7 @@ export default function Footer({}: FooterProps) {
             >
               <a href="#about">Education</a>
             </li> */}
-            <li className="h-7 w-fit cursor-pointer py-1 md:py-0">
+            <li className="h-7 w-fit cursor-pointer py-1 md:py-0 hover:translate-x-2 transition-transform">
               <a href="#contact" className="flex pr-2">
                 <ChevronRight /> <span>Contact</span>
               </a>
