@@ -14,6 +14,8 @@ export default function Projects({}: ProjectsProps) {
       .get(`/api/project?id=${process.env.NEXT_PUBLIC_USER_ID}`)
       .then(({ data }) => {
         setProjects(data);
+        console.log(data);
+        
       });
   }, []);
 
@@ -26,7 +28,7 @@ export default function Projects({}: ProjectsProps) {
           🛠💻 Projects <span className="text-rose-800">Made</span>
         </h1>
 
-        <div className="flex flex-wrap justify-center gap-x-3">
+        <div className="flex flex-wrap justify-center ">
           {projects &&
             projects.length > 0 &&
             projects.map((project) => (

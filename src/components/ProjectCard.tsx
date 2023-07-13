@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="w-fit text-center mx-auto shadow-2xl"
       options={defaultTiltOptions}
     >
-      <div className="w-[400px] h-80 mx-auto my-4 group relative overflow-hidden transition-transform rounded-lg">
+      <div className="w-[300px] md:w-[400px] h-80 mx-auto my-4 group relative overflow-hidden transition-transform rounded-lg">
         <Image
           className="object-cover h-full w-full absolute"
           src={project.image.url}
