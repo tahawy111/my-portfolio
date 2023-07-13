@@ -24,7 +24,7 @@ export default function About({}: AboutProps) {
               alt="Personal Image"
               width={450}
               height={450}
-              className="rounded-3xl border-2 border-neutral-500 shadow-2xl"
+              className="rounded-3xl border-2 border-neutral-500 shadow-2xl pt-5"
               src={`https://res.cloudinary.com/dzdqy3wfg/image/upload/v1686835848/bd54g7pbchj7fz8prdpp.jpg`}
             />
           </motion.div>
