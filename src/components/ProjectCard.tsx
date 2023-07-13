@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="w-fit text-center mx-auto shadow-2xl"
       options={defaultTiltOptions}
     >
-      <div className="w-[300px] md:w-[400px] h-80 mx-auto my-4 group relative overflow-hidden transition-transform rounded-lg">
+      <div className="w-[250px] md:w-[400px] h-80 mx-auto my-4 group relative overflow-hidden transition-transform rounded-lg">
         <Image
           className="object-cover h-full w-full absolute"
           src={project.image.url}
@@ -26,9 +26,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           height={9999}
           alt="Project image"
         />
-      <div className="duration-300 group-hover:translate-y-0 -bottom-[50%] group-hover:bottom-0 absolute bg-white/100 h-52 flex justify-between flex-col pb-3">
-          <h1 className="text-xl text-center font-bold bg-neutral-900 text-white py-3">
-            {project.title}
+        <div className="duration-300 group-hover:translate-y-0 -bottom-[50%] group-hover:bottom-0 absolute bg-white/100 h-52 flex justify-between flex-col pb-3">
+          <h1 className="md:text-xl text-center md:font-semibold bg-neutral-900 text-white py-3">
+            {project.title.length > 25
+              ? project.title.slice(0, 25) + "..."
+              : project.title}
           </h1>
           <p className="py-3 px-1">{project.description}</p>
           <div className="flex justify-between px-1">

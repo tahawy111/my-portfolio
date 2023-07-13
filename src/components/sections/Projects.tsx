@@ -28,7 +28,7 @@ export default function Projects({}: ProjectsProps) {
           🛠💻 Projects <span className="text-rose-800">Made</span>
         </h1>
 
-        <div className="flex flex-wrap justify-center ">
+        <div className="flex flex-wrap justify-center gap-5">
           {projects &&
             projects.length > 0 &&
             projects.map((project) => (

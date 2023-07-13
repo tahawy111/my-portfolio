@@ -8,17 +8,17 @@ interface AboutProps {}
 
 export default function About({}: AboutProps) {
   return (
-    <motion.div id="about" className={`flex flex-col w-full`}>
-      <h1 className="text-5xl font-bold mx-auto">
+    <motion.div id="about" className={`flex flex-col w-full gap-5`}>
+      <h1 className="text-5xl font-bold mx-auto mt-28">
         About{" "}
         <span className="text-sky-500 underline underline-offset-8">Me</span>
       </h1>
-      <div className="flex justify-center gap-16 flex-wrap items-center m-20 overflow-hidden">
+      <div className="flex justify-center gap-16 flex-wrap items-center md:m-20 overflow-hidden">
         <Tilt options={defaultTiltOptions}>
           <motion.div
             initial={{ x: "-20vw", opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            className="w-72 grayscale hover:grayscale-0 group"
+            className="w-64 md:w-72 grayscale hover:grayscale-0 group"
           >
             <Image
               alt="Personal Image"
