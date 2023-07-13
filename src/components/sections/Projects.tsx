@@ -14,8 +14,6 @@ export default function Projects({}: ProjectsProps) {
       .get(`/api/project?id=${process.env.NEXT_PUBLIC_USER_ID}`)
       .then(({ data }) => {
         setProjects(data);
-        console.log(data);
-        
       });
   }, []);
 
