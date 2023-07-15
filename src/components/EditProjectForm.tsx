@@ -70,7 +70,7 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
         });
 
         toast({
-            title: "Project Update Succesfully ✅✅✅",
+            title: "Project Updated Succesfully ✅✅✅",
           });
 
       } else {
