@@ -1,19 +1,21 @@
 "use client";
-import AdminLayout from "@/components/AdminLayout";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Separator } from "@/components/ui/Separator";
-import { toast } from "@/hooks/use-toast";
-import { imageUpload } from "@/lib/ImageUpload";
-import axios, { AxiosError } from "axios";
-import { ArrowLeftCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { Button } from "./ui/Button";
+import { ArrowLeftCircle } from "lucide-react";
+import { Separator } from "./ui/Separator";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { imageUpload } from "@/lib/ImageUpload";
+import { toast } from "@/hooks/use-toast";
+import AdminLayout from "./AdminLayout";
+import { Input } from "./ui/Input";
+import { IProject } from "@/models/projectModel";
 
-interface PageProps {}
+interface EditProjectFormProps {
+  project: IProject;
+}
 
-export default function Page({}: PageProps) {
-  const router = useRouter();
+export default function EditProjectForm({}: EditProjectFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<{
     title: string;
@@ -29,11 +31,12 @@ export default function Page({}: PageProps) {
     description: "",
   });
 
+  const router = useRouter();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setFormData((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
-
   const handleImageInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     setFormData((prev) => {
