@@ -37,7 +37,7 @@ export default function SkillsTable({ skills }: SkillsTableProps) {
       CLOUDINARY_API_SECRET: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET!,
       CLOUDINARY_CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
     });
-    window.location.reload();
+    setSkillsList(skillsList.filter((skill) => skill._id !== id));
   };
 
   return (
