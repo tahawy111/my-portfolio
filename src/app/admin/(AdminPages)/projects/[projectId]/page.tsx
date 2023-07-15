@@ -1,3 +1,6 @@
+import AdminLayout from "@/components/AdminLayout";
+import EditProjectForm from "@/components/EditProjectForm";
+import Project, { IProject } from "@/models/projectModel";
 import {} from "react";
 
 interface EditProjectProps {
@@ -6,10 +9,14 @@ interface EditProjectProps {
   };
 }
 
-export default function EditProject({
+export default async function EditProject({
   params: { projectId },
 }: EditProjectProps) {
-
-
-  return <div>{projectId}</div>;
+  const project: IProject = JSON.parse(JSON.stringify(await Project.findById(projectId)));
+  if(!project) return
+  return (
+    <AdminLayout>
+      <EditProjectForm project={project} />
+    </AdminLayout>
+  );
 }

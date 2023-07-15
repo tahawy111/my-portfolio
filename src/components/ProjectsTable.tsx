@@ -4,12 +4,13 @@ import { useState } from "react";
 import { DataTable } from "./ui/DataTable";
 import Image from "next/image";
 import { buttonVariants } from "./ui/Button";
-import { ArrowBigDown, Code2, Eye } from "lucide-react";
+import { ArrowBigDown, Code2, Edit, Edit2, Eye } from "lucide-react";
 import { Trash } from "lucide-react";
 import { ArrowBigUp } from "lucide-react";
 import axios from "axios";
 import { handleDeleteImage } from "@/lib/ImageUpload";
 import { cn, moveItem, wait } from "@/lib/utils";
+import Link from "next/link";
 
 interface ProjectsTableProps {
   projectsList: IProject[];
@@ -104,6 +105,9 @@ export default function ProjectsTable({ projectsList }: ProjectsTableProps) {
                       handleDeleteSkill(project._id, project.image.public_id)
                     }
                   />
+                  <Link href={`/admin/projects/${project._id}`}>
+                  <Edit className="text-yellow-500" />
+                  </Link>
                   <div className="">
                     <ArrowBigUp
                       onClick={() => handleChangeIndex("UP", index)}

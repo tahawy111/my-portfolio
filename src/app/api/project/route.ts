@@ -51,12 +51,11 @@ export async function GET(req: Request) {
   try {
     const id = new URL(req.url).searchParams.get("id");
 
-    const checkUser = await User.findById(id)
-    await Project.findById(checkUser?.projects[0])
-    const user = await User.findById(id).populate("projects")
+    const checkUser = await User.findById(id);
+    await Project.findById(checkUser?.projects[0]);
+    const user = await User.findById(id).populate("projects");
 
     if (!user) return new Response("Unauthorized", { status: 401 });
-    
 
     return new Response(JSON.stringify(user.projects));
   } catch (error) {
@@ -89,6 +88,42 @@ export async function DELETE(req: Request) {
       $pull: {
         skills: id,
       },
+    });
+
+    return new Response("OK");
+  } catch (error) {
+    console.log(error);
+
+    if (error instanceof z.ZodError) {
+      return new Response("Invalid request data passed.", { status: 422 });
+    }
+    return new Response(
+      "Could not add skill at this time, please try again later.",
+      {
+        status: 500,
+      }
+    );
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const body = await req.json();
+    const { codeLink, image, title, viewLink, description } =
+    projectValidator.parse(body);
+    const session = await getAuthSession();
+    const id = new URL(req.url).searchParams.get("id");
+
+    if (!session?.user) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+    await Project.findByIdAndUpdate(id, {
+      codeLink,
+      image,
+      title,
+      viewLink,
+      description,
     });
 
     return new Response("OK");
