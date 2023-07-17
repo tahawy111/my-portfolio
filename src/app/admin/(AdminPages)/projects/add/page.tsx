@@ -7,6 +7,7 @@ import { toast } from "@/hooks/use-toast";
 import { imageUpload } from "@/lib/ImageUpload";
 import axios, { AxiosError } from "axios";
 import { ArrowLeftCircle } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
@@ -33,6 +34,7 @@ export default function Page({}: PageProps) {
     setFormData((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
+
   const handleImageInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
     setFormData((prev) => {
@@ -72,7 +74,7 @@ export default function Page({}: PageProps) {
 
       return toast({
         title: "Something went wrong.",
-        description: "Projec wasn&apos;t added successfully. Please try again.",
+        description: "Projec wasn't added successfully. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -111,17 +113,7 @@ export default function Page({}: PageProps) {
               onChange={handleChange}
             />
           </div>
-          <div className="flex w-full flex-col my-3">
-            <label>Project Screenshot</label>
-            <div className="flex">
-              <Input
-                type="file"
-                placeholder="Project Screenshot"
-                name="image"
-                onChange={handleImageInputChange}
-              />
-            </div>
-          </div>
+
           <div className="flex w-full flex-col my-3">
             <label>Project Description</label>
             <Input
@@ -148,6 +140,20 @@ export default function Page({}: PageProps) {
               value={formData.viewLink}
               onChange={handleChange}
             />
+          </div>
+
+
+          <div className="flex w-full flex-col my-3">
+            <label>Project Screenshot</label>
+            <div className="flex">
+              <Input
+                type="file"
+                placeholder="Project Screenshot"
+                name="image"
+                onChange={handleImageInputChange}
+              />
+            </div>
+              {formData.image && typeof formData.image === "object" && <Image className="my-3 mx-auto" src={URL.createObjectURL(formData.image)} alt="ScreenShot" width={200} height={200}/>}
           </div>
 
           <Button

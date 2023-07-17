@@ -12,7 +12,6 @@ export default function Skills({}: SkillsProps) {
     axios
       .get(`/api/skill?id=${process.env.NEXT_PUBLIC_USER_ID}`)
       .then(({ data }) => {
-        console.log(data);
         setSkills(data);
       });
   }, []);
@@ -26,7 +25,7 @@ export default function Skills({}: SkillsProps) {
         💻💪 Skills & <span className="text-rose-800">Tools</span>
       </h1>
 
-      <div className="bg-black/50 h-full my-4 mx-28 rounded-2xl p-5 flex flex-wrap gap-5 justify-center">
+      <div className="bg-black/50 h-full w-full my-4 rounded-2xl py-5 flex flex-wrap gap-4 justify-center">
         {skills &&
           (skills as ISkill[]).map((skill) => (
             <SkillCard

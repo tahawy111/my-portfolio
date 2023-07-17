@@ -89,7 +89,7 @@ export default function AddSkillForm({
 
       return toast({
         title: "Something went wrong.",
-        description: "Skill wasn&apos;t created successfully. Please try again.",
+        description: "Skill wasn't created successfully. Please try again.",
         variant: "destructive",
       });
     } finally {

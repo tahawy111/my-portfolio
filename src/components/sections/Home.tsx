@@ -26,7 +26,7 @@ export default function Home({}: HomeProps) {
   return (
     <div
       id="home"
-      className={`flex flex-col w-full justify-center h-[calc(100vh-63px)]`}
+      className={`flex flex-col w-full justify-center mt-16`}
     >
       <div className="flex flex-wrap gap-y-16 xl:grid-cols-2 items-center justify-between gap-6 md:mx-32 mt-16">
         <div className="flex flex-col justify-center ml-10 gap-y-3">
