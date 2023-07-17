@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <h1 className="text-xl text-center font-bold bg-neutral-900 text-white py-3">
             <span className="group-hover:hidden">
               {project.title.length > 25
-                ? project.title.slice(0, 25)
+                ? project.title.slice(0, 25) + "..."
                 : project.title}
             </span>
             <span className="hidden group-hover:block">{project.title}</span>
