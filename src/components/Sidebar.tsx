@@ -80,7 +80,7 @@ const Sidebar: FC<SidebarProps> = ({
           />
           Projects
         </Link>
-        <Link
+        {/* <Link
           href={`/orders`}
           className={pathname.includes("/orders") ? activeLink : inActiveLink}
         >
@@ -99,8 +99,8 @@ const Sidebar: FC<SidebarProps> = ({
             />
           </svg>
           Orders
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={`/settings`}
           className={pathname.includes("/settings") ? activeLink : inActiveLink}
         >
@@ -110,7 +110,7 @@ const Sidebar: FC<SidebarProps> = ({
             }
           />
           Settings
-        </Link>
+        </Link> */}
         <button onClick={() => signOut()} className={inActiveLink}>
           <LogOut className="rotate-180" />
           Logout
