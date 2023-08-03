@@ -168,7 +168,7 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
           </div>
           <Image
             className="my-3 mx-auto"
-            src={project.image.url}
+            src={formData.image && typeof formData.image === "object" ? URL.createObjectURL(formData.image) : project.image.url}
             alt="ScreenShot"
             width={200}
             height={200}
