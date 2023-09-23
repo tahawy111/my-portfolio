@@ -70,11 +70,13 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
         });
 
         toast({
-            title: "Project Updated Succesfully ✅✅✅",
-          });
-
+          title: "Project Updated Succesfully ✅✅✅",
+        });
       } else {
-        await axios.put(`/api/project?id=${project._id}`, payload);
+        await axios.put(`/api/project?id=${project._id}`, {
+          ...payload,
+          image: project.image,
+        });
       }
 
       router.back();
@@ -91,7 +93,7 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
 
       return toast({
         title: "Something went wrong.",
-        description: "Projec wasn't added successfully. Please try again.",
+        description: "Project wasn't updated successfully. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -168,7 +170,11 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
           </div>
           <Image
             className="my-3 mx-auto"
-            src={formData.image && typeof formData.image === "object" ? URL.createObjectURL(formData.image) : project.image.url}
+            src={
+              formData.image && typeof formData.image === "object"
+                ? URL.createObjectURL(formData.image)
+                : project.image.url
+            }
             alt="ScreenShot"
             width={200}
             height={200}
