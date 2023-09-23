@@ -31,6 +31,7 @@ export default function SkillsTable({ skills }: SkillsTableProps) {
   };
 
   const handleDeleteSkill = async (id: string, public_id: string) => {
+    if(!confirm("Are you sure to delete this skill?")) return
     await axios.delete(`/api/skill?id=${id}`);
     await handleDeleteImage(public_id, {
       CLOUDINARY_API_KEY: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY!,
