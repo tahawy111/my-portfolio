@@ -68,14 +68,14 @@ const Sidebar: FC<SidebarProps> = ({
           💪 Skills
         </Link>
         <Link
-          href={`/admin/project`}
+          href={`/admin/projects`}
           className={
-            pathname.includes("/admin/project") ? activeLink : inActiveLink
+            pathname.includes("/admin/projects") ? activeLink : inActiveLink
           }
         >
           <Icons.tools
             className={
-              pathname.includes("/project") ? activeIcon : inActiveIcon
+              pathname.includes("/projects") ? activeIcon : inActiveIcon
             }
           />
           Projects
