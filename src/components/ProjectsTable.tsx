@@ -105,7 +105,7 @@ export default function ProjectsTable({ projectsList }: ProjectsTableProps) {
                       handleDeleteSkill(project._id, project.image.public_id)
                     }
                   />
-                  <Link href={`/admin/projects/${project._id}`}>
+                  <Link href={`/admin/project/${project._id}`}>
                   <Edit className="text-yellow-500" />
                   </Link>
                   <div className="">
