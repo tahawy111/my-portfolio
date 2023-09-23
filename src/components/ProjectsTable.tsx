@@ -36,6 +36,7 @@ export default function ProjectsTable({ projectsList }: ProjectsTableProps) {
   };
 
   const handleDeleteSkill = async (id: string, public_id: string) => {
+    if(!confirm("Are you sure to delete this project?")) return
     setProjects((projects) => {
       const newProjects = projects.filter((project) => project._id !== id);
       return newProjects;
