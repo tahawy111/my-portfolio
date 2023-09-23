@@ -1,7 +1,10 @@
+"use client";
 import AdminLayout from "@/components/AdminLayout";
 import EditProjectForm from "@/components/EditProjectForm";
+import Loading from "@/components/Loading";
 import Project, { IProject } from "@/models/projectModel";
-import {} from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface EditProjectProps {
   params: {
@@ -9,14 +12,21 @@ interface EditProjectProps {
   };
 }
 
-export default async function EditProject({
+export default function EditProject({
   params: { projectId },
 }: EditProjectProps) {
-  const project: IProject = JSON.parse(JSON.stringify(await Project.findById(projectId)));
-  if(!project) return
+  const [project, setProject] = useState<IProject>();
+  useEffect(() => {
+    axios
+      .get(`/api/project/getSingleProject?id=${projectId}`)
+      .then(({ data }) => {
+        console.log(data);
+        setProject(data);
+      });
+  }, []);
   return (
     <AdminLayout>
-      <EditProjectForm project={project} />
+      {project ? <EditProjectForm project={project} /> : <Loading />}
     </AdminLayout>
   );
 }
