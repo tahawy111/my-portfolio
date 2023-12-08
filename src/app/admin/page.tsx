@@ -5,7 +5,6 @@ import { toast } from "@/hooks/use-toast";
 import { getAuthSession } from "@/lib/auth";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import {} from "react";
 
 export default function Page() {
   const { data: session } = useSession();

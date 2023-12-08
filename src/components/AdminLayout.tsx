@@ -1,9 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { HTMLAttributes, ReactNode, useState } from "react";
 import { Icons } from "./Icons";
-import Loading from "./Loading";
 import Sidebar from "./Sidebar";
 
 interface AdminLayoutProps extends HTMLAttributes<HTMLDivElement> {
@@ -32,24 +30,26 @@ export default function AdminLayout({
             )}
           </button>
           <div className="flex grow justify-end mr-8">
-            <Icons.logo className="w-8 h-8" />
+            <a href="/" target="_blank" rel="noopener noreferrer">
+              <Icons.logo className="w-8 h-8" />
+            </a>
           </div>
         </div>
-        
+
         <div className="">
           <Sidebar show={showNav} setShow={setShowNav} />
           <div className="">
-          <button
-            className="p-3 md:block hidden"
-            onClick={() => setShowNav((prev) => !prev)}
-          >
-            {!showNav ? (
-              <Menu className="w-7 h-7" />
-            ) : (
-              <X className="w-7 h-7" />
-            )}
-          </button>
-          <div className={"flex-grow m-10"}>{children}</div>
+            <button
+              className="p-3 md:block hidden"
+              onClick={() => setShowNav((prev) => !prev)}
+            >
+              {!showNav ? (
+                <Menu className="w-7 h-7" />
+              ) : (
+                <X className="w-7 h-7" />
+              )}
+            </button>
+            <div className={"flex-grow m-10"}>{children}</div>
           </div>
         </div>
       </div>
