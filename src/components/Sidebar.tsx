@@ -38,7 +38,9 @@ const Sidebar: FC<SidebarProps> = ({
       {...props}
     >
       <div className="mb-4 mr-4 hidden sm:block">
-        <Icons.logo className="w-8 h-8" />
+        <a href="/" target="_blank" rel="noopener noreferrer">
+          <Icons.logo className="w-8 h-8" />
+        </a>
       </div>
       <nav className="flex flex-col gap-2 overflow-auto">
         <div className="flex justify-between">
